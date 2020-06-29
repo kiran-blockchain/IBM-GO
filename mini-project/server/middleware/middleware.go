@@ -2,12 +2,15 @@ package middleware
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
+	"../models"
 )
 
 func IndexPage(res http.ResponseWriter, req *http.Request) {
@@ -18,7 +21,18 @@ func GetAllTasks(res http.ResponseWriter, req *http.Request) {
 }
 
 func AddTask(res http.ResponseWriter, req *http.Request) {
-	res.Write([]byte("Addd"))
+	var task models.ToDoList
+	_ = json.NewDecoder(req.Body).Decode(&task)
+	fmt.Println(task)
+	_, err := insertTask(task)
+	if err != nil {
+		res.Write([]byte("Error"))
+
+	} else {
+		json.NewEncoder(res).Encode(task)
+	}
+
+	//res.Write([]byte("Addd"))
 }
 
 func DeleteTask(res http.ResponseWriter, req *http.Request) {
@@ -29,7 +43,7 @@ func EditTask(res http.ResponseWriter, req *http.Request) {
 }
 
 const connectionString = "mongodb://go_user:gouser2020@ds159185.mlab.com"
-const databaseName = ""
+const databaseName = "go_db"
 
 var collection *mongo.Collection
 
@@ -45,4 +59,17 @@ func init() {
 	}
 	fmt.Println("Connected to Mongobd")
 	collection = client.Database(databaseName).Collection(colelctionName)
+}
+
+func insertTask(task models.ToDoList) (insertedId string, errorResult error) {
+
+	insertResult, err := collection.InsertOne(context.Background(), task)
+	if err != nil {
+		log.Fatal(err)
+		errorResult = err
+	}
+
+	fmt.Println("Inserted a record", insertResult.InsertedID)
+	insertedId = "inserted successfully"
+	return
 }
