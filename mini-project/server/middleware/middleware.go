@@ -28,7 +28,7 @@ func EditTask(res http.ResponseWriter, req *http.Request) {
 	res.Write([]byte("Edit"))
 }
 
-const connectionString = ""
+const connectionString = "mongodb://go_user:gouser2020@ds159185.mlab.com"
 const databaseName = ""
 
 var collection *mongo.Collection
