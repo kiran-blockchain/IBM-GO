@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -51,9 +52,16 @@ const colelctionName = "todolist"
 
 func init() {
 	//Seeting the client options
-	clientOptions := options.Client().ApplyURI(connectionString)
+	//clientOptions := options.Client().ApplyURI(connectionString)
 	//conenct to mongodb
-	client, err := mongo.Connect(context.TODO(), clientOptions)
+	//client, err := mongo.Connect(context.TODO(), clientOptions)
+
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(connectionString))
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = client.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
