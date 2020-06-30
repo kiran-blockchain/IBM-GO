@@ -13,5 +13,7 @@ func Router() *mux.Router {
 	router.HandleFunc("/edit", middleware.EditTask)
 	router.HandleFunc("/delete", middleware.DeleteTask)
 	router.HandleFunc("/getAll", middleware.GetAllTasks)
-	return router
+		return router
 }
+
+
