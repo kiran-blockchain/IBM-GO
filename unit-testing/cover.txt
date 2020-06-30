@@ -1,0 +1,5 @@
+mode: set
+/home/kiran/Desktop/trainings/golang-training/goexamples/IBM-GO/unit-testing/hello.go:5.33,6.17 1 1
+/home/kiran/Desktop/trainings/golang-training/goexamples/IBM-GO/unit-testing/hello.go:6.17,8.3 1 1
+/home/kiran/Desktop/trainings/golang-training/goexamples/IBM-GO/unit-testing/hello.go:8.8,10.3 1 0
+/home/kiran/Desktop/trainings/golang-training/goexamples/IBM-GO/unit-testing/main.go:3.14,8.2 0 0

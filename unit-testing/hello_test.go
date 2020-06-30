@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestXYZ(t *testing.T) {
+func TestFirst(t *testing.T) {
 
 	//verify the Greeting Func
 	actualResult := Greetings("")
@@ -14,3 +14,14 @@ func TestXYZ(t *testing.T) {
 		t.Errorf("Error in greetings  %v expected-actucal is %v", expectedResult, actualResult)
 	}
 }
+
+// func TestSecond(t *testing.T) {
+
+// 	//verify the Greeting Func
+// 	actualResult := Greetings("Kiran")
+// 	expectedResult := "Helloo Kiran"
+
+// 	if actualResult != expectedResult {
+// 		t.Errorf("Error in greetings  %v expected-actucal is %v", expectedResult, actualResult)
+// 	}
+// }
