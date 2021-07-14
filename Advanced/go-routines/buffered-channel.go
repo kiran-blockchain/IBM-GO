@@ -6,9 +6,9 @@ import (
 
 func main() {
 
-	c := make(chan string, 2)
+	c := make(chan string)
 	c <- "kiran"
 	c <- "Ravi"
 	fmt.Println(<-c)
-	fmt.Println(<-c)
+	//fmt.Println(<-c)
 }

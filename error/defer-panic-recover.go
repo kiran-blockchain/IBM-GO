@@ -24,10 +24,11 @@ func deferMain() {
 	}
 }
 func main() {
-
+	//This will execute last
 	defer deferMain()
+	//This one will execute first
 	defer deferOne()
 	//fmt.Println("I am main")
-
-	panic("Help!!!!!")
+	fmt.Println("I am before the panic")
+	panic("Help I am a fatal error!!!!!")
 }

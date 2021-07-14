@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"../models"
+	"server/models"
 )
 
 func IndexPage(res http.ResponseWriter, req *http.Request) {
@@ -43,7 +43,7 @@ func EditTask(res http.ResponseWriter, req *http.Request) {
 	res.Write([]byte("Edit"))
 }
 
-const connectionString = "mongodb://go_user:gouser2020@ds159185.mlab.com"
+const connectionString = "mongodb://localhost:27017"
 const databaseName = "go_db"
 
 var collection *mongo.Collection

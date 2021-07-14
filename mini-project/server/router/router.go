@@ -1,8 +1,9 @@
 package router
 
 import (
-	"../middleware"
 	"github.com/gorilla/mux"
+	
+	"server/middleware"
 )
 
 //Router takes zero inputs and returns the router to main
@@ -13,7 +14,5 @@ func Router() *mux.Router {
 	router.HandleFunc("/edit", middleware.EditTask)
 	router.HandleFunc("/delete", middleware.DeleteTask)
 	router.HandleFunc("/getAll", middleware.GetAllTasks)
-		return router
+	return router
 }
-
-
